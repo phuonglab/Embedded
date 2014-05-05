@@ -14,3 +14,6 @@ Note for embedded linux
 
 ############ output console to lcd  #############
   + tty0::respawn:-/bin/sh
+
+ *(volatile uint32_t *)(0x3fffff80) = 0x00000001;
+    dummy_buf_32b = *(volatile uint32_t *)(0x3fffff80);
