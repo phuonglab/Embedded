@@ -10,3 +10,7 @@ Note for embedded linux
 
 *Uboot: add new cmd
 + I2C
+
+
+############ output console to lcd  #############
+  + tty0::respawn:-/bin/sh
