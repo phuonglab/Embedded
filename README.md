@@ -48,3 +48,9 @@ when config :set up io before write/read data
     dummy_buf_32b = *(volatile uint32_t *)(0x3fffff80);
     
     http://mikrocontroller.bplaced.net/wordpress/?page_id=621
+    
+###########################################
+Compare tool:Araxis Merge
+
+
+
