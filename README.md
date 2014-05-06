@@ -37,6 +37,9 @@ int cpu_eth_init(bd_t *bis)
 }
 
 
+###############################################
+when config :set up io before write/read data
+
 
 ############ output console to lcd  #############
   + tty0::respawn:-/bin/sh
