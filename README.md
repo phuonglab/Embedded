@@ -10,6 +10,32 @@ Note for embedded linux
 
 *Uboot: add new cmd
 + I2C
+*Uboot add eth:
+change config:
+#define CONFIG_SMC911X
+#define CONFIG_SMC911X_16_BIT
+#define CONFIG_SMC911X_BASE		0x44000000
+
+add :
+int board_eth_init(bd_t *bis)
+{
+	int rc = 0;
+#ifdef CONFIG_SMC911X
+	rc = smc911x_initialize(0, CONFIG_SMC911X_BASE);
+#endif
+	return rc;
+}
+
+or 
+int cpu_eth_init(bd_t *bis)
+{
+	int ret = -ENODEV;
+#ifdef CONFIG_SMC911X
+	ret = smc911x_initialize(0, CONFIG_SMC911X_BASE);
+#endif
+	return ret;
+}
+
 
 
 ############ output console to lcd  #############
