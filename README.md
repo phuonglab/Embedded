@@ -52,5 +52,7 @@ when config :set up io before write/read data
 ###########################################
 Compare tool:Araxis Merge
 
+#########################################
+Image tool : GIMP tool
 
 
