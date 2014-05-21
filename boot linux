@@ -1,0 +1,64 @@
+for Aragon RZ/A1H:
+
+--------------------------------------------------------------------------------------------
+   TFTP NFS SERVER BOOT
+--------------------------------------------------------------------------------------------
+
+1.Set up tftpd-hpa.
+
+host $ sudo apt-get install tftpd-hpa
+host $ sudo gedit /etc/default/tftpd-hpa
+# /etc/default/tftpd-hpa
+*Adds :
+TFTP_USERNAME="tftp"
+TFTP_DIRECTORY="/home/rootpn/tftpboot/kernel"
+TFTP_ADDRESS="0.0.0.0:69"
+TFTP_OPTIONS="--secure"
+
+2.Set up nfs-server.
+ 
+host $ sudo apt-get install nfs-kernel-server
+host $ sudo gedit /etc/exports 
+*Adds :
+/home/rootpn/tftpboot/rootfs *(rw,sync,no_root_squash,no_subtree_check)
+
+3.Creat tftpboot.
+
+host $ cd /home/username
+host $ mkdir tftpboot
+host $ cd tftpboot
+host $ mkdir kernel
+host $ mkdir rootfs
+
+4.Start service
+host $ sudo service tftpd-hpa restart
+host $ sudo service nfs-kernel-server restart
+
+5.Set u-boot environment variables.
+=> setenv ipaddr 192.168.1.241
+=> setenv netmask 255.255.255.0
+=> setenv gatewayip 192.168.1.1
+=> setenv serverip 192.168.1.4
+=> setenv bootpath /home/rootpn/tftpboot/rootfs
+=> setenv bootargs console=ttySC2,115200 root=/dev/nfs rw nfsroot=${serverip}:${bootpath}  ip=${ipaddr} ignore_loglevel earlyprintk=sh-sci.2,115200 ren_vdc5fb.disp_panel=5
+=> setenv bootcmd run nfsboot
+=> setenv nfsboot tftpboot 0x0c000000 uImage \; tftpboot 0x0bf00000 rza1-rskrza1.dtb \; bootm 0x0c000000 - 0x0bf00000
+=> setenv autoload n
+=> saveenv
+	
+--------------------------------------------------------------------------------------------
+   USB BOOT
+--------------------------------------------------------------------------------------------	
+=> setenv bootcmd usb start \; run usbload \; bootm 0x0c000000 - 0x0bf00000
+=> setenv bootargs console=ttySC2,115200 root=/dev/sda1 rw rootdelay=3 ignore_loglevel earlyprintk=sh-sci.2,115200
+=> setenv usbload ext2load usb 0 0c000000 uImage \; ext2load usb 0 0bf00000 rza1-rskrza1.dtb
+=> saveenv
+
+
+--------------------------------------------------------------------------------------------
+   SD CARD BOOT
+--------------------------------------------------------------------------------------------
+=> setenv bootcmd mmc rescan \; run usbload \; bootm 0x0c000000 - 0x0bf00000
+=> setenv bootargs console=ttySC2,115200 root=/dev/mmcblk0 rw rootdelay=3 ignore_loglevel earlyprintk=sh-sci.2,115200
+=> setenv usbload ext2load mmc 0 0c000000 uImage \; ext2load mmc 0 0bf00000 rza1-rskrza1.dtb
+=> saveenv
