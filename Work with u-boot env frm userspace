@@ -1,0 +1,6 @@
+*Work with u-boot env form userspace  
+	Use fw_setenv/fw_printenv 
+
+Referent :
+	[0] http://labs.isee.biz/index.php/How_to_modify_the_uboot_environment_from_userspace
+	[1] http://e2e.ti.com/support/arm/sitara_arm/f/791/t/238869.aspx
