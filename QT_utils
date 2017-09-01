@@ -1,0 +1,10 @@
+========= QT ==================
+*add list all UI items
+ QList<QCheckBox *> allCheckBoxs =  this->findChildren<QCheckBox *>();
+ 
+ 
+ ======== QT add 2 file same name with diff folder ==============
+CONFIG+=object_parallel_to_source
+QMAKE_CXXFLAGS += -std=c++11
+unix:OBJECTS_DIR = ./tmp
+unix|win32: LIBS += -lpthread -lwebsockets -lrestbed -levent -luuid
