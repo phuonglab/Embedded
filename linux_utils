@@ -1,0 +1,10 @@
+===== find and replace text by cmd
+ perl -i -p -e 's{home/osboxes/vwtm_ut/}{"new sting"}g' ~/MicroSAR.patch
+ 
+ ======= git command ==========
+git clean -fd
+ git clean -f
+ git reset
+ git reset --hard HEAD
+ git apply --whitespace=nowarn  ~/br_lge_extensions.patch
+ git push origin master
