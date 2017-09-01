@@ -8,3 +8,5 @@ git clean -fd
  git reset --hard HEAD
  git apply --whitespace=nowarn  ~/br_lge_extensions.patch
  git push origin master
+======= create file with patch =====
+mkdir -p /my/other/path/here/ && touch /my/other/path/here/cpedthing.txt
