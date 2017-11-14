@@ -1,0 +1,2 @@
+Shoud use clock from SYS_CLK/BUS_CLK
+When face issue ACK error=> check clock, setting into SYS_CLK/BUS_CLK
