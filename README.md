@@ -51,8 +51,14 @@ when config :set up io before write/read data
     
 ###########################################
 Compare tool:Araxis Merge
+###########################################
 
-#########################################
+###########################################
 Image tool : GIMP tool
+###########################################
 
-
+###########################################
+C++ build error
+###########################################
+/home/phuong/kn/pc/streaming_engine/core/Camera/sambaCam.cpp:71: error: undefined reference to `vtable for vms::camera::SambaCamTranscoder'
+>> miss destructor
