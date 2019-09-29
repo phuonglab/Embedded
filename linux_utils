@@ -10,3 +10,19 @@ git clean -fd
  git push origin master
 ======= create file with patch =====
 mkdir -p /my/other/path/here/ && touch /my/other/path/here/cpedthing.txt
+
+ ======= ssh and drobear for embedded target ==========
+ + cross compile drobear
+ + copy dropbear dropbearkey
+ + use dropbearkey to generate key
+ + run drobear
+ >>>> verify from Desktop: $ssh {user}@{host}
+ ===== use ssh without pass work
+ + on Desktop run: 
+ $ssh-keygen -t rsa
+ $ssh-copy-id -i ~/.ssh/id_rsa.pub {user}@{host}
+ 
+=====Download a single file from a remote ftp server to your machine:
+ $sftp {user}@{host}:{remoteFileName} {localFileName}
+=====Upload a single file from your machine to a remote ftp server:
+$sftp {user}@{host}:{remote_dir} <<< $'put {local_file_path}'
