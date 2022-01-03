@@ -1,7 +1,0 @@
-1. In VirtualBox, select the Ubuntu VM and go to “Settings -> Shared Folders”. Select the local folder that you want to share with the Linux VM.
-
-2. Boot into the Ubuntu VM. Open the file manager and navigate to the “/media” folder. You should see the shared folder with a “sf_” prefix.
-
-3. sudo usermod -a -G vboxsf username
-
-4. Restart
